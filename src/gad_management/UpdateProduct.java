@@ -3,7 +3,7 @@ package gad_management;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,13 +21,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class UpdateProduuct extends JFrame {
+public class UpdateProduct extends JFrame {
 	Container c;
     JLabel label1,label2,label3,label4,label5;
-    JTextField airline_id,airline_type,airline_capacity,airline_price;
-    JButton update_airlinetype,update_airlinecapacity,update_airlineprice;
-    UpdateProduuct(){
-    	setTitle("Update Airline");
+    JTextField product_id,product_type,product_capacity,product_price;
+    JButton update_producttype,update_productcapacity,update_productprice;
+    UpdateProduct(){
+    	setTitle("Update product");
 		setSize(1920,1080);
 
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -66,64 +66,64 @@ public class UpdateProduuct extends JFrame {
         c.add(label4);
         c.add(label5);
         
-        airline_id=new JTextField();
-        airline_id.setBounds(1069,343,162,37);
-        c.add(airline_id);
+        product_id=new JTextField();
+        product_id.setBounds(1069,343,162,37);
+        c.add(product_id);
         
-        airline_type=new JTextField();
-        airline_type.setBounds(994,459,127,31);
-        c.add(airline_type);
+        product_type=new JTextField();
+        product_type.setBounds(994,459,127,31);
+        c.add(product_type);
         
-        airline_capacity=new JTextField();
-        airline_capacity.setBounds(994,550,127,31);
-        c.add(airline_capacity);
+        product_capacity=new JTextField();
+        product_capacity.setBounds(994,550,127,31);
+        c.add(product_capacity);
         
-        airline_price=new JTextField();
-        airline_price.setBounds(994,647,127,31);
-        c.add(airline_price);
+        product_price=new JTextField();
+        product_price.setBounds(994,647,127,31);
+        c.add(product_price);
         
         
-        update_airlinetype=new JButton();
-        update_airlinetype.setForeground(new Color(240, 255, 240));
-        update_airlinetype.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        update_airlinetype.addActionListener(new ActionListener() {
+        update_producttype=new JButton();
+        update_producttype.setForeground(new Color(240, 255, 240));
+        update_producttype.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        update_producttype.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		update_airlinetype(e);
+        		update_producttype(e);
         	}
         });
         
-        update_airlinetype.setText("Update");
-        update_airlinetype.setBackground(new Color(165, 42, 42));
-        update_airlinetype.setBounds(1194,453,114,37);
-        c.add(update_airlinetype);
+        update_producttype.setText("Update");
+        update_producttype.setBackground(new Color(165, 42, 42));
+        update_producttype.setBounds(1194,453,114,37);
+        c.add(update_producttype);
         
-        update_airlinecapacity=new JButton();
-        update_airlinecapacity.setForeground(new Color(240, 255, 240));
-        update_airlinecapacity.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        update_airlinecapacity.addActionListener(new ActionListener() {
+        update_productcapacity=new JButton();
+        update_productcapacity.setForeground(new Color(240, 255, 240));
+        update_productcapacity.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        update_productcapacity.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		update_airlinecapacity(e);
+        		update_productcapacity(e);
         	}
         });
         
-        update_airlinecapacity.setText("Update");
-        update_airlinecapacity.setBackground(new Color(165, 42, 42));
-        update_airlinecapacity.setBounds(1193,546,115,31);
-        c.add(update_airlinecapacity);
+        update_productcapacity.setText("Update");
+        update_productcapacity.setBackground(new Color(165, 42, 42));
+        update_productcapacity.setBounds(1193,546,115,31);
+        c.add(update_productcapacity);
         
-        update_airlineprice=new JButton();
-        update_airlineprice.setForeground(new Color(240, 255, 240));
-        update_airlineprice.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        update_airlineprice.addActionListener(new ActionListener() {
+        update_productprice=new JButton();
+        update_productprice.setForeground(new Color(240, 255, 240));
+        update_productprice.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        update_productprice.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		update_airlineprice(e);
+        		update_productprice(e);
         	}
         });
         
-        update_airlineprice.setText("Update");
-        update_airlineprice.setBackground(new Color(165, 42, 42));
-        update_airlineprice.setBounds(1194,643,114,31);
-        c.add(update_airlineprice);
+        update_productprice.setText("Update");
+        update_productprice.setBackground(new Color(165, 42, 42));
+        update_productprice.setBounds(1194,643,114,31);
+        c.add(update_productprice);
         
         JPanel panel = new JPanel();
         panel.setBackground(Color.BLACK);
@@ -167,6 +167,16 @@ public class UpdateProduuct extends JFrame {
         SignOut.setBounds(1781,22,100,47);
         c.add(SignOut);
         
+        ImageIcon background_image=new ImageIcon("E:\\update.jpg");
+        Image img=background_image.getImage();
+        Image tempimag=img.getScaledInstance(1920,1080,Image.SCALE_SMOOTH);
+        background_image=new ImageIcon(tempimag);
+        JLabel background=new JLabel("",background_image,JLabel.CENTER);
+        background.setBounds(0,0,1920,1080);
+        c.add(background);
+		//f.getContentPane().setBackground(Color.white);
+		c.setLayout(null);
+		c.setVisible(true);
         setVisible(true);
       
 	    
@@ -180,30 +190,30 @@ public class UpdateProduuct extends JFrame {
 		lp.show();
 	}
 	
-    public void update_airlinetype(ActionEvent e) {
+    public void update_producttype(ActionEvent e) {
     	try{
 
             try {
 		        Class.forName("com.mysql.cj.jdbc.Driver");
-		        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/flight_management","Amal","AmalKrishna@7736");
+		        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/product_management","Amal","AmalKrishna@7736");
 		    	} catch (ClassNotFoundException e1) {
 		    		e1.printStackTrace();
 		    	} 
-	        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/flight_management","Amal","AmalKrishna@7736");
+	        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/product_management","Amal","AmalKrishna@7736");
 
 			
-			    String airlineid=airline_id.getText();
-			    String airlinetype=airline_type.getText();
-			    PreparedStatement ps=conn.prepareStatement("Update airline_details set airline_type=? where airline_id=?");
-			    ps.setString(2,airlineid );
-			    ps.setString(1,airlinetype );
+			    String productid=product_id.getText();
+			    String producttype=product_type.getText();
+			    PreparedStatement ps=conn.prepareStatement("Update product_details set product_type=? where product_id=?");
+			    ps.setString(2,productid );
+			    ps.setString(1,producttype );
 			    int i=ps.executeUpdate();
 			    if(i>0) {
 			    	JOptionPane.showMessageDialog(this,i+" records updated");
-			    	airline_type.setText("");
+			    	product_type.setText("");
 			    }
 			    else {
-			    	JOptionPane.showMessageDialog(this, "Airline Id Not Found");
+			    	JOptionPane.showMessageDialog(this, "product Id Not Found");
 			    }
 			    conn.close();
 			}
@@ -214,30 +224,30 @@ public class UpdateProduuct extends JFrame {
     }
     
     
-	public void update_airlinecapacity(ActionEvent e) {
+	public void update_productcapacity(ActionEvent e) {
 		try{
 
             try {
 		        Class.forName("com.mysql.cj.jdbc.Driver");
-		        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/flight_management","Amal","AmalKrishna@7736");
+		        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/product_management","Amal","AmalKrishna@7736");
 		    	} catch (ClassNotFoundException e1) {
 		    		e1.printStackTrace();
 		    	} 
-	        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/flight_management","Amal","AmalKrishna@7736");
+	        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/product_management","Amal","AmalKrishna@7736");
 
 			
-			    String airlineid=airline_id.getText();
-			    String airlinecapacity=airline_capacity.getText();
-			    PreparedStatement ps=conn.prepareStatement("Update airline_details set airline_capacity=? where airline_id=?");
-			    ps.setString(2,airlineid );
-			    ps.setString(1,airlinecapacity );
+			    String productid=product_id.getText();
+			    String productcapacity=product_capacity.getText();
+			    PreparedStatement ps=conn.prepareStatement("Update product_details set product_capacity=? where product_id=?");
+			    ps.setString(2,productid );
+			    ps.setString(1,productcapacity );
 			    int i=ps.executeUpdate();
 			    if(i>0) {
 			    	JOptionPane.showMessageDialog(this,i+" records updated");
-			    	airline_capacity.setText("");
+			    	product_capacity.setText("");
 			    }
 			    else {
-			    	JOptionPane.showMessageDialog(this, "Airline Id Not Found");
+			    	JOptionPane.showMessageDialog(this, "product Id Not Found");
 			    }
 			    conn.close();
 			}
@@ -248,30 +258,30 @@ public class UpdateProduuct extends JFrame {
 	 }
 	
 	
-	public void update_airlineprice(ActionEvent e) {
+	public void update_productprice(ActionEvent e) {
 		try{
 
             try {
 		        Class.forName("com.mysql.cj.jdbc.Driver");
-		        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/flight_management","Amal","AmalKrishna@7736");
+		        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/gad_management","root","rav3nf0@sql");
 		    	} catch (ClassNotFoundException e1) {
 		    		e1.printStackTrace();
 		    	} 
-	        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/flight_management","Amal","AmalKrishna@7736");
+	        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/gad_management","root","rav3nf0@sql");
 
 			
-			    String airlineid=airline_id.getText();
-			    String airlineprice=airline_price.getText();
-			    PreparedStatement ps=conn.prepareStatement("Update airline_details set airline_price=? where airline_id=?");
-			    ps.setString(2,airlineid );
-			    ps.setString(1,airlineprice );
+			    String productid=product_id.getText();
+			    String productprice=product_price.getText();
+			    PreparedStatement ps=conn.prepareStatement("Update product_details set product_price=? where product_id=?");
+			    ps.setString(2,productid );
+			    ps.setString(1,productprice );
 			    int i=ps.executeUpdate();
 			    if(i>0) {
 			    	JOptionPane.showMessageDialog(this,i+" records updated");
-			    	airline_price.setText("");
+			    	product_price.setText("");
 			    }
 			    else {
-			    	JOptionPane.showMessageDialog(this, "Airline Id Not Found");
+			    	JOptionPane.showMessageDialog(this, "product Id Not Found");
 			    }
 			    conn.close();
 			}

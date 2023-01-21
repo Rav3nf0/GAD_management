@@ -3,6 +3,7 @@ package gad_management;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,13 +25,13 @@ public class AddProduct extends JFrame {
 
 	Container c;
 	JLabel label1,label2,label3,label4,label5,label6;
-	JTextField airline_id,airline_name,airline_type,airline_capacity,airline_price;
-	JButton add_airlinedetail;
+	JTextField product_id,product_name,product_type,product_capacity,product_price;
+	JButton add_productdetail;
 	
 	JButton HomePage,SignOut;
 	
 	AddProduct(){
-		setTitle("Add Airline");
+		setTitle("Add product");
 		setSize(1920,1080);
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	     
@@ -56,14 +57,14 @@ public class AddProduct extends JFrame {
         label5.setForeground(new Color(165, 42, 42));
         label5.setFont(new Font("Tahoma", Font.PLAIN, 25));
         label6=new JLabel("Add Product");
-        label6.setFont(new Font("Castellar", Font.PLAIN, 35));
+        label6.setFont(new Font("Castellar", Font.BOLD, 35));
         
         label1.setBounds(787,316,137,28);
         label2.setBounds(787,407,152,28);
         label3.setBounds(787,485,143,28);
         label4.setBounds(787,567,168,28);
         label5.setBounds(787,642,168,28);
-        label6.setBounds(852,166,298,67);
+        label6.setBounds(826,183,331,67);
         
         c.add(label1);
         c.add(label2);
@@ -72,38 +73,38 @@ public class AddProduct extends JFrame {
         c.add(label5);
         c.add(label6);
         
-        airline_id=new JTextField();
-        airline_id.setBounds(1054,316,129,29);
-        c.add(airline_id);
+        product_id=new JTextField();
+        product_id.setBounds(1054,316,129,29);
+        c.add(product_id);
         
-        airline_name=new JTextField();
-        airline_name.setBounds(1054,412,129,28);
-        c.add(airline_name);
+        product_name=new JTextField();
+        product_name.setBounds(1054,412,129,28);
+        c.add(product_name);
         
-        airline_type=new JTextField();
-        airline_type.setBounds(1054,485,129,29);
-        c.add(airline_type);
+        product_type=new JTextField();
+        product_type.setBounds(1054,485,129,29);
+        c.add(product_type);
         
-        airline_capacity=new JTextField();
-        airline_capacity.setBounds(1054,567,129,29);
-        c.add(airline_capacity);
+        product_capacity=new JTextField();
+        product_capacity.setBounds(1054,567,129,29);
+        c.add(product_capacity);
         
-        airline_price=new JTextField();
-        airline_price.setBounds(1054,641,129,29);
-        c.add(airline_price);
+        product_price=new JTextField();
+        product_price.setBounds(1054,641,129,29);
+        c.add(product_price);
   
-        add_airlinedetail=new JButton();
-        add_airlinedetail.setForeground(new Color(240, 248, 255));
-        add_airlinedetail.setFont(new Font("Tahoma", Font.PLAIN, 24));
-        add_airlinedetail.addActionListener(new ActionListener() {
+        add_productdetail=new JButton();
+        add_productdetail.setForeground(new Color(240, 248, 255));
+        add_productdetail.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        add_productdetail.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		add_airlinedetail(e);
+        		add_productdetail(e);
         	}
         });
-        add_airlinedetail.setBackground(new Color(165, 42, 42));
-        add_airlinedetail.setText("Add");
-        add_airlinedetail.setBounds(921,730,152,54);
-        c.add(add_airlinedetail);
+        add_productdetail.setBackground(new Color(165, 42, 42));
+        add_productdetail.setText("Add");
+        add_productdetail.setBounds(921,730,152,54);
+        c.add(add_productdetail);
         
         
         JPanel panel = new JPanel();
@@ -148,6 +149,17 @@ public class AddProduct extends JFrame {
         SignOut.setBounds(1781,22,100,47);
         c.add(SignOut);
         
+        ImageIcon background_image=new ImageIcon("E:\\add.jpg");
+        Image img=background_image.getImage();
+        Image tempimag=img.getScaledInstance(1920,1080,Image.SCALE_SMOOTH);
+        background_image=new ImageIcon(tempimag);
+        JLabel background=new JLabel("",background_image,JLabel.CENTER);
+        background.setBounds(0,0,1920,1080);
+        c.add(background);
+		//f.getContentPane().setBackground(Color.white);
+		c.setLayout(null);
+		c.setVisible(true);
+        
         setVisible(true);
 	}
 	
@@ -159,35 +171,35 @@ public class AddProduct extends JFrame {
 		LoginPage lp=new LoginPage();
 		lp.show();
 	}
-	public void add_airlinedetail(ActionEvent e) {
+	public void add_productdetail(ActionEvent e) {
 		try{
 
             try {
 		        Class.forName("com.mysql.cj.jdbc.Driver");
-		        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/flight_management","Amal","AmalKrishna@7736");
+		        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/gad_management","Root","AmalKrishna@7736");
 		    } catch (ClassNotFoundException e1) {
 		        e1.printStackTrace();
 		    } 
-		    Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/flight_management","Amal","AmalKrishna@7736");
+		    Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/gad_management","Root+","AmalKrishna@7736");
 		
-		    String airlineid=airline_id.getText();
-		    String airlinename=airline_name.getText();
-		    String airlinetype=airline_type.getText();
-		    int airlinecapacity=Integer.parseInt(airline_capacity.getText());
-		    int airlineprice=Integer.parseInt(airline_price.getText());
-		    PreparedStatement ps=conn.prepareStatement("INSERT INTO AIRLINE_DETAILS VALUES(?,?,?,?,?);");
-		    ps.setString(1,airlineid );
-		    ps.setString(2,airlinename );
-		    ps.setString(3,airlinetype );
-		    ps.setInt(4,airlinecapacity );
-		    ps.setInt(5,airlineprice );
+		    String productid=product_id.getText();
+		    String productname=product_name.getText();
+		    String producttype=product_type.getText();
+		    int productcapacity=Integer.parseInt(product_capacity.getText());
+		    int productprice=Integer.parseInt(product_price.getText());
+		    PreparedStatement ps=conn.prepareStatement("INSERT INTO product_DETAILS VALUES(?,?,?,?,?);");
+		    ps.setString(1,productid );
+		    ps.setString(2,productname );
+		    ps.setString(3,producttype );
+		    ps.setInt(4,productcapacity );
+		    ps.setInt(5,productprice );
 		    int i=ps.executeUpdate();
 		    JOptionPane.showMessageDialog(this,i+" records updated");
-		    airline_id.setText("");
-		    airline_name.setText("");
-		    airline_type.setText("");
-		    airline_capacity.setText("");
-		    airline_price.setText("");
+		    product_id.setText("");
+		    product_name.setText("");
+		    product_type.setText("");
+		    product_capacity.setText("");
+		    product_price.setText("");
 		    conn.close();
 			}
 			catch(SQLException e1)

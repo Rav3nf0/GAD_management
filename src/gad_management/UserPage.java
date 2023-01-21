@@ -1,16 +1,15 @@
 package gad_management;
 
 import java.awt.*;
-import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import java.awt.Font;
-import java.awt.Color;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -77,6 +76,16 @@ public class UserPage extends JFrame {
         panel_3.setBounds(21, 1020, 1896, 21);
         getContentPane().add(panel_3);
         
+        ImageIcon background_image=new ImageIcon("E:\\user.jpg");
+        Image img=background_image.getImage();
+        Image tempimag=img.getScaledInstance(1920,1080,Image.SCALE_SMOOTH);
+        background_image=new ImageIcon(tempimag);
+        JLabel background=new JLabel("",background_image,JLabel.CENTER);
+        background.setBounds(0,0,1920,1080);
+        c.add(background);
+		//f.getContentPane().setBackground(Color.white);
+		c.setLayout(null);
+		c.setVisible(true);
         setVisible(true);
     }
     private void bookingbutton(ActionEvent e) {

@@ -41,18 +41,18 @@ public class LoginPage extends JFrame{
         label2.setForeground(new Color(165, 42, 42));
         label2.setFont(new Font("Tahoma", Font.PLAIN, 22));
 
-        label1.setBounds(742,319,144,20);
-        label2.setBounds(742,397,144,20);
+        label1.setBounds(742,352,144,20);
+        label2.setBounds(742,422,144,20);
 
         c.add(label1);
         c.add(label2);
 
         user=new JTextField();
-        user.setBounds(1017,307,144,32);
+        user.setBounds(1017,352,144,32);
         c.add(user);
 
         pass=new JPasswordField();
-        pass.setBounds(1017,385,144,32);
+        pass.setBounds(1017,422,144,32);
         c.add(pass);
 
         btn=new JButton("Login");
@@ -64,7 +64,7 @@ public class LoginPage extends JFrame{
         		loginbuttonactionperformed(e);
         	}
         });
-        btn.setBounds(889,490,151,57);
+        btn.setBounds(874,513,151,57);
         c.add(btn);
         
         registerbtn=new JButton("Register");
@@ -76,7 +76,7 @@ public class LoginPage extends JFrame{
         });
         registerbtn.setFont(new Font("Castellar", Font.BOLD, 13));
         registerbtn.setBackground(new Color(165, 42, 42));
-        registerbtn.setBounds(1249,572,120,32);
+        registerbtn.setBounds(1136,623,120,32);
         c.add(registerbtn);
         
         JPanel panel = new JPanel();
@@ -99,14 +99,19 @@ public class LoginPage extends JFrame{
         panel_3.setBounds(21, 1020, 1896, 21);
         getContentPane().add(panel_3);
         
-        JPanel panel_4 = new JPanel();
-        panel_4.setBackground(Color.LIGHT_GRAY);
-        panel_4.setBorder(new LineBorder(null, 4, true));
-        panel_4.setBounds(512, 245, 905, 400);
-        getContentPane().add(panel_4);
-        
      
         
+        ImageIcon background_image=new ImageIcon("E:\\login2.jpg");
+        Image img=background_image.getImage();
+        Image tempimag=img.getScaledInstance(1920,1080,Image.SCALE_SMOOTH);
+        background_image=new ImageIcon(tempimag);
+        JLabel background=new JLabel("",background_image,JLabel.CENTER);
+        background.setBounds(0,0,1920,1080);
+        c.add(background);
+		//f.getContentPane().setBackground(Color.white);
+		c.setLayout(null);
+		c.setVisible(true);
+	
         setVisible(true);
 
     

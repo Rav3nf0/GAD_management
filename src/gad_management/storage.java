@@ -12,8 +12,8 @@ public class storage {
         Statement stmt = null;
         Statement stmt1 = null;
         try {
-            Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mypharma", "postgres",
+            Class.forName("org.mysql.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:5432/mypharma", "postgres",
                     "admin");
             stmt = con.createStatement();
             stmt1 = con.createStatement();
@@ -41,8 +41,8 @@ public class storage {
         Statement stmt = null;
         Statement stmt1 = null;
         try {
-            Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mypharma", "postgres",
+            Class.forName("org.mysql.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:5432/mypharma", "postgres",
                     "admin");
             stmt = con.createStatement();
             stmt1 = con.createStatement();
